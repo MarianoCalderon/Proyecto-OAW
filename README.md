@@ -2,7 +2,7 @@
 Espacio de trabajo para el proyecto de la asignatura Optimización de Aplicaciones Web. 
 
 Integrantes:
-- Alcocer Herrera Julio Cesar
+- Alcocer Herrera Julio César
 - Calderón Núñez Mariano Marcel
 - Kuh Esquivel Mauro Arif
 - Lara Rubio José Luis
