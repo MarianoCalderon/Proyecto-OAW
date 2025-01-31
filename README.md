@@ -7,4 +7,4 @@ Integrantes:
 - Kuh Esquivel Mauro Arif
 - Lara Rubio José Luis
 
-<img src="Julio.jpeg" height="200"><img src="Mariano.jpeg" height="200<img src="Mauro.jpeg" height="200">
+<img src="/Media/Julio.jpeg" height="200"> <img src="/Media/Mariano.jpeg" height="200"><img src="/Media/Mauro.jpeg" height="200">
