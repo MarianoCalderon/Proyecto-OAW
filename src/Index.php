@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
 <head>
     <meta charset="UTF-8">
     <title>Feed RSS</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
 	
@@ -68,37 +68,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
 
 	<div class="header">
 		<h1>Feed de noticias</h1>
+        <div class="search">
+            <!-- Sorting -->
+            <form method="GET" action="">
+                <label for="sort">Ordenar por:</label>
+                <select id="sort" name="sort" onchange="this.form.submit()">
+                    <option value="pub_date">Fecha</option>
+                    <option value="title">Título</option>
+                    <option value="description">Descripción</option>
+                </select>
+            </form>
+
+            <!-- Search bar -->
+            <form method="GET" action="">
+                <label for="search">Buscar noticias:</label>
+                <input type="text" id="search" name="search" placeholder="Buscar por título o descripción" value="<?= htmlspecialchars($searchQuery) ?>">
+                <button type="submit">Buscar</button>
+            </form>
+
+        </div>
 	</div>
 
-    <!-- Sorting -->
-	<form method="GET" action="">
-		<label for="sort">Ordenar por:</label>
-		<select id="sort" name="sort" onchange="this.form.submit()">
-			<option value="pub_date">Fecha</option>
-			<option value="title">Título</option>
-			<option value="description">Descripción</option>
-		</select>
-	</form>
-
-    <!-- Search bar -->
-	<form method="GET" action="">
-		<label for="search">Buscar noticias:</label>
-		<input type="text" id="search" name="search" placeholder="Buscar por título o descripción" value="<?= htmlspecialchars($searchQuery) ?>">
-		<button type="submit">Buscar</button>
-	</form>
 
 
     <!-- Feed -->
+    <div class="items-container">
     <?php if (!empty($items)) : ?>
         <?php foreach ($items as $item) : ?>
             <div class="item">
-                <div class="date">
-                    <?= htmlspecialchars(date('d / M / Y', strtotime($item['pub_date']))) ?>
-                </div>
                 <div class="title">
                     <a href="<?= htmlspecialchars($item['link']) ?>" target="_blank">
                         <?= htmlspecialchars($item['title']) ?>
                     </a>
+                </div>
+                <div class="date">
+                   <b><?= htmlspecialchars(date('d / M / Y', strtotime($item['pub_date']))) ?></b> 
                 </div>
                 <div class="description">
                     <?php
@@ -111,8 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
                 </div>
             </div>
         <?php endforeach; ?>
-    <?php else : ?>
-        <p>No articles found.</p>
     <?php endif; ?>
+    </div>
+
+    <footer>
+        <p>Feed RSS</p>
+    </footer>
+   
 </body>
 </html>
