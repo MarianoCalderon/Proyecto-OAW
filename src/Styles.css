@@ -1,7 +1,7 @@
 body {
     font: 12px/1.4em Verdana, sans-serif;
     color: #333;
-    background-image: url(Img/background.jpg);
+    background-image: url(../Img/background.jpg);
     width: 90%;
     margin: 50px auto;
     padding: 0;
@@ -31,11 +31,36 @@ body {
     margin-bottom: 10px;
 }
 
+.header form button{
+    background-color: #eb9494;
+}
+
+.header form button:hover{
+    background-color: #633838;
+}
+
 .items-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+}
+
+.channels-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: left;
+    margin-bottom: 1rem;
+}
+
+.channel{
+    color: white;
+    background-color:rgb(224, 106, 106);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    min-width: 100px; 
 }
 
 .item {
@@ -45,6 +70,31 @@ body {
     width: 30%;
     padding: 2rem;
     text-align: center;
+}
+
+button{
+    background-color: #ca3c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    size: 3rem;
+}
+
+button:hover{
+    background-color: #ac6b6b;
+}
+
+#button-update{
+    background-color: #f56d6d;
+    width: 370px;
+    height: 40px;
+    font-size: 16px;
+    align-items: center;
+    border-radius: 3px;
+}
+
+#button-update:hover{
+    background-color: #e04b4b;
 }
 
 .date {
@@ -93,3 +143,4 @@ footer {
     width: 100%;
     margin-top: 2rem;
 }
+

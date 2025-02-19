@@ -48,23 +48,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
 		<input type="text" id="channel_url" name="channel_url" placeholder="Inserta el URL del RSS" required>
 		<button type="submit" name="add_channel">Añadir sitio</button>
 	</form>
-	
-    <!-- Update news -->
-	<form method="POST" action="">
-		<button type="submit" name="update_news">Actualizar noticias</button>
-	</form>
+
 
 	<!-- Channels -->
-	<?php if (!empty($channels)) : ?>
-        <div class="channel-list">
-            <h2>Tus sitios:</h2>
-			<?php foreach ($channels as $channel) : ?>
-				<p><?= htmlspecialchars($channel['title']) ?></p>
-			<?php endforeach; ?>
-        </div>
-    <?php else : ?>
-        <p>No tienes sitiios registrados</p>
-    <?php endif; ?>
+    <h2>Tus sitios:</h2>
+    <div class="channels-container">
+        <?php if (!empty($channels)) : ?>
+            <?php foreach ($channels as $channel) : ?>
+                <div class="channel">
+                    <b><?= htmlspecialchars($channel['title']) ?></b>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No tienes sitios registrados</p>
+        <?php endif; ?>
+    </div>
+	
 
 	<div class="header">
 		<h1>Feed de noticias</h1>
@@ -84,6 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
                 <label for="search">Buscar noticias:</label>
                 <input type="text" id="search" name="search" placeholder="Buscar por título o descripción" value="<?= htmlspecialchars($searchQuery) ?>">
                 <button type="submit">Buscar</button>
+            </form>
+
+            <!-- Update news -->
+            <form  method="POST" action="">
+                <button id = "button-update" type="submit" name="update_news">Actualizar noticias</button>
             </form>
 
         </div>
