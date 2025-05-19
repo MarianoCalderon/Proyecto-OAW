@@ -1,16 +1,16 @@
-CREATE TABLE channels (
+CREATE TABLE IF NOT EXISTS channels (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     feed_url VARCHAR(512) NOT NULL UNIQUE
 );
 
-CREATE TABLE feed_items (
+CREATE TABLE IF NOT EXISTS  feed_items (
     id INT PRIMARY KEY AUTO_INCREMENT,
     channel_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     link VARCHAR(512) NOT NULL UNIQUE,
-    pub_date VARCHAR(50) NOT NULL,
+    pub_date DATE NOT NULL,
     FOREIGN KEY (channel_id) REFERENCES channels(id) ON DELETE CASCADE
 );

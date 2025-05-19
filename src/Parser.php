@@ -24,10 +24,15 @@ function parse_feed($feedUrl) {
         if (!$items) return null;
 
         foreach ($items as $item) {
+            // Get date in the correct format
+            $pubDate = $item->getElementsByTagName('pubDate')->item(0)->nodeValue;
+            $dateTime = new DateTime($pubDate);
+            $dateOnly = $dateTime->format("Y-m-d");
+
             $result['item'][] = [
                 'title' => $item->getElementsByTagName('title')->item(0)->nodeValue,
                 'description' => $item->getElementsByTagName('description')->item(0)->nodeValue,
-                'pubDate' => $item->getElementsByTagName('pubDate')->item(0)->nodeValue,
+                'pubDate' => $dateOnly,
                 'link' => $item->getElementsByTagName('link')->item(0)->nodeValue,
             ];
         }
