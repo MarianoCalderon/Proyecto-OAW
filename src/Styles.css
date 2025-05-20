@@ -1,5 +1,15 @@
+:root {
+  --button: #253494;
+  --primary: #507cdc;
+  --secondary: #a3b1c0;
+  --accent: #d2ecfd;
+  --text: #1e293b;
+  --bg: #f8fafc;
+}
+
 body {
-    font: 12px/1.4em Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px/1.4em;
     color: #333;
     background-image: url(../Img/background.jpg);
     width: 90%;
@@ -7,9 +17,8 @@ body {
     padding: 0;
 }
 
-
 .header {
-    background-color: #ca3c3c;
+    background-color: var(--bg);
     width: 100%;
     height: 200px;
     padding-bottom: 10px;
@@ -18,35 +27,38 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: whitesmoke;
+    color: var(--text);
+    border: var(--text) 3px solid;
+    border-radius: 3px;
+
 }
 
 .header h1 {
     font-size: 2.5rem;
 }
 
-.header form{
+.header form {
     font-size: 1rem;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.header form button{
-    background-color: #eb9494;
-}
+.header form button {
+    background-color: var(--button);
 
-.header form button:hover{
-    background-color: #633838;
+}
+.header form button:hover {
+    background-color: var(--accent);
 }
 
 .items-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.channels-container{
+.channels-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -54,38 +66,40 @@ body {
     margin-bottom: 1rem;
 }
 
-.channel{
-    color: white;
-    background-color:rgb(224, 106, 106);
+.channel {
+    color: var(--text);
+    background-color: var(--secondary);
     border-radius: 8px;
     padding: 10px;
     text-align: center;
-    min-width: 100px; 
+    min-width: 100px;
 }
 
 .item {
-    background-color: #929190;
-    width: calc(33.333% - 20px); /* 3 fichas por fila */
-    max-width: 300px;
+    overflow: hidden;
+    background-color: var(--bg);
+    border: var(--text) 3px solid;
+    border-radius: 3px;
     width: 30%;
-    padding: 2rem;
-    text-align: center;
+    max-width: 300px;
+    padding: 0px;
+    text-align: justify;
 }
 
-button{
-    background-color: #ca3c3c;
+button {
+    background-color: var(--button);
     color: white;
     border: none;
     border-radius: 3px;
     size: 3rem;
 }
 
-button:hover{
-    background-color: #ac6b6b;
+button:hover {
+    background-color: var(--accent);
 }
 
-#button-update{
-    background-color: #f56d6d;
+#button-update {
+    background-color: var(--button);
     width: 370px;
     height: 40px;
     font-size: 16px;
@@ -93,54 +107,53 @@ button:hover{
     border-radius: 3px;
 }
 
-#button-update:hover{
-    background-color: #e04b4b;
+#button-update:hover {
+    background-color: var(--accent);
 }
 
 .date {
     color: #000000;
     font-size: 0.9em;
-    margin-bottom: 5px;
+    margin: 5px;
 }
 
 .title {
-    background-color: #ca3c3c;
+    background-color: var(--secondary);
     font-weight: bold;
     margin-bottom: 8px;
-    padding: 10px;  
-    width: 100%;  
-    box-sizing: border-box; 
-    display: block; 
-    text-align: center; 
-    border-radius: 1rem;
-    transition: transform 0.3s ease, padding 0.3s ease;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    text-align: justify;
+    transition: 0.5s ease;
 }
 
-
 .title a {
-    color: black;
+    color: var(--text);
     text-decoration: none;
     display: block;
 }
 
 .title:hover {
-    transform: scale(1.08); 
-    padding: 12px; 
+    transition: 0.5s ease;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .description {
-    color: #171717;
+    color: var(--text);
     line-height: 1.6em;
+    margin: 5px;
 }
 
 footer {
-    background-color: #ca3c3c;
-    color: whitesmoke;
+    background-color: var(--button);
+    color: var(--text);
     text-align: center;
     padding: 10px;
     width: 100%;
     margin-top: 2rem;
 }
-
