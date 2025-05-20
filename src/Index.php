@@ -1,4 +1,5 @@
 <?php
+ob_start("ob_gzhandler");
 require 'FeedHandler.php';
 
 $items = get_news();
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
 <head>
     <meta charset="UTF-8">
     <title>Feed RSS</title>
-    <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="Styles.php">
 </head>
 <body>
 	
