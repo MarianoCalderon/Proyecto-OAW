@@ -153,12 +153,11 @@ function search_news($search) {
                 MATCH(f.description, f.title) AGAINST (? IN NATURAL LANGUAGE MODE) AS score
             FROM feed_items f
             JOIN channels c ON f.channel_id = c.id
-            WHERE MATCH(f.description, f.title) AGAINST (? IN NATURAL LANGUAGE MODE)
             ORDER BY score DESC
             LIMIT 50
         ");
 
-        $query->execute([$search, $search]);
+        $query->execute([$search]);
 
         $result = $query->fetchAll();
 
