@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['sort'])) {
             <form method="GET" action="">
                 <label for="sort">Ordenar por:</label>
                 <select id="sort" name="sort" onchange="this.form.submit()">
+                    <option value=""></option>
                     <option value="pub_date">Fecha</option>
                     <option value="title">Título</option>
                     <option value="description">Descripción</option>
