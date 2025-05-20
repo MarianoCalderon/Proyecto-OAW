@@ -116,6 +116,7 @@ function get_news($sortBy = 'pub_date') {
             FROM feed_items f
             JOIN channels c ON f.channel_id = c.id
             ORDER BY f.$sortColumn DESC
+            LIMIT 50
         ");
 
         return $query->fetchAll();
@@ -140,17 +141,20 @@ function search_news($search) {
                 f.description, 
                 f.link, 
                 f.pub_date,
-                c.title AS channel_title
+                c.title AS channel_title,
+                MATCH(f.description, f.title) AGAINST (? IN NATURAL LANGUAGE MODE) AS score
             FROM feed_items f
             JOIN channels c ON f.channel_id = c.id
-            WHERE f.title LIKE ? OR f.description LIKE ?
-            ORDER BY f.pub_date DESC
+            WHERE MATCH(f.description, f.title) AGAINST (? IN NATURAL LANGUAGE MODE)
+            ORDER BY score DESC
+            LIMIT 50
         ");
 
-        $query->execute(["%".$search."%", "%".$search."%"]);
+        $query->execute([$search, $search]);
 
         return $query->fetchAll();
     } catch (PDOException $e) {
+        echo $e->getMessage();
         error_log("Search failed: " . $e->getMessage());
         return [];
     } finally {
