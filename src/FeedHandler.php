@@ -1,5 +1,6 @@
 <?php
 require 'Parser.php';
+require 'CacheHandler.php';
 require 'DB.php';
 
 function add_channel($url) {
@@ -82,6 +83,7 @@ function update_news() {
             $conn->commit();
         }
 
+        clearSearchCache();
         return true;
 
     } catch (PDOException $e) {
@@ -133,6 +135,12 @@ function search_news($search) {
     $conn = get_db_conn();
     if (!$conn) return [];
 
+    // Search cache to see if the result exists
+    $cachedResult = getCachedSearch($search); 
+    if($cachedResult != null){
+        return $cachedResult;
+    }
+
     try {
         $query = $conn->prepare("
             SELECT 
@@ -152,7 +160,10 @@ function search_news($search) {
 
         $query->execute([$search, $search]);
 
-        return $query->fetchAll();
+        $result = $query->fetchAll();
+
+        cacheSearch($search, $result);
+        return $result;
     } catch (PDOException $e) {
         echo $e->getMessage();
         error_log("Search failed: " . $e->getMessage());
